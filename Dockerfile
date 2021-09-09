@@ -73,4 +73,4 @@ rm -rf /var/lib/apt/lists/*
 
 RUN a2enmod rewrite
 
-EXPOSE 8080
+EXPOSE 80
