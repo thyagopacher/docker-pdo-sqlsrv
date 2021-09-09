@@ -44,6 +44,8 @@ libssl-dev \
 openssl \
 supervisor
 
+RUN docker-php-ext-configure calendar && docker-php-ext-install calendar
+
 # Install PHP extensions
 RUN pecl install sqlsrv pdo_sqlsrv
 
