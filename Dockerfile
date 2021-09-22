@@ -4,6 +4,8 @@ WORKDIR /var/www/html/
 
 COPY . ./
 
+COPY php.ini $PHP_INI_DIR/php.ini
+
 # Get repository and install wget and vim
 RUN apt-get update && apt-get install -y \
     wget \
@@ -15,7 +17,20 @@ RUN apt-get update && apt-get install -y \
     apt-transport-https \
     libxml2-dev \
     unixodbc-dev \
+    git \
+    openssh-server \    
     libzip-dev
+
+# Authorize SSH Host
+RUN mkdir -p /root/.ssh && \
+    chmod 0700 /root/.ssh && \
+    ssh-keyscan github.com > /root/.ssh/known_hosts
+
+# Add the keys and set permissions
+RUN echo "$ssh_prv_key" > /root/.ssh/id_rsa && \
+    echo "$ssh_pub_key" > /root/.ssh/id_rsa.pub && \
+    chmod 600 /root/.ssh/id_rsa && \
+    chmod 600 /root/.ssh/id_rsa.pub
 
 # necessário para sqlsrv
 RUN wget -qO - https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \

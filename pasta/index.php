@@ -53,7 +53,7 @@ var_dump($feriados);
             mktime(0, 0, 0, $mes_pascoa, $dia_pascoa + 60,  $ano_pascoa), //Corpus Cirist
         );
 
-        sort($feriados);
+        sort($feriados); 
 
         return $feriados;
     }
