@@ -90,4 +90,8 @@ rm -rf /var/lib/apt/lists/*
 
 RUN a2enmod rewrite
 
+#coloca um padrão melhor para memory do PHP
+RUN cd /usr/local/etc/php/conf.d/ && \
+  echo 'memory_limit = 2048M' >> /usr/local/etc/php/conf.d/docker-php-ram-limit.ini
+
 EXPOSE 80
