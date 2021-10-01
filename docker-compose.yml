@@ -12,6 +12,11 @@ services:
       - db 
     links:
       - db
+    networks:
+      default:
+        aliases:
+          - crmmw.local  
+          - indicadores.local
   db:
     image: mcr.microsoft.com/mssql/server:2017-latest
     restart: always
