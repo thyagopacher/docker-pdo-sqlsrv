@@ -5,7 +5,7 @@ services:
     container_name: apache_web
     restart: always
     volumes:
-      - .:/var/www/html
+      - ./web:/var/www/html
     ports:
       - "80:80"
     depends_on:
@@ -17,6 +17,8 @@ services:
         aliases:
           - crmmw.local  
           - indicadores.local
+          - teste.local  
+          - at.local  
   db:
     image: mcr.microsoft.com/mssql/server:2017-latest
     restart: always

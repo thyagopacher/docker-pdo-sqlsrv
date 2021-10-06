@@ -68,6 +68,11 @@ RUN docker-php-ext-configure calendar && docker-php-ext-install calendar
 # Install PHP extensions
 RUN pecl install sqlsrv pdo_sqlsrv
 
+RUN apt-get -y update \ 
+&& apt-get install -y libicu-dev \ 
+&& docker-php-ext-configure intl \ 
+&& docker-php-ext-install intl
+
 # PRA VER SE TEM ALGUM BUG NO PHP
 # RUN php -i | grep "Configure Command"
 
