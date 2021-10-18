@@ -1,5 +1,4 @@
-# docker-pdo-sqlsrv
-docker-pdo-sqlsrv
+# Docker SQL Server com PHP #
 
 Maneira mais fácil de usar o docker para SQL Server ele tem o host para navegar nos scripts. Use a pasta /web para por qualquer script PHP novo criado
 
