@@ -9,9 +9,11 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - db 
+      - db
+      - mailhog 
     links:
       - db
+      - mailhog
     networks:
       default:
         aliases:
@@ -27,3 +29,9 @@ services:
       - ACCEPT_EULA=Y
     ports:
       - "1433:1433"
+
+  mailhog:
+    image: mailhog/mailhog
+    ports: 
+    - 1025:1025
+    - 8025:8025  
