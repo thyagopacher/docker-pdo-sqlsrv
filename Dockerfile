@@ -25,6 +25,9 @@ RUN apt-get update && apt-get install -y \
     openssh-server \    
     libzip-dev
 
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer 
+
 # Authorize SSH Host
 RUN mkdir -p /root/.ssh && \
     chmod 0700 /root/.ssh && \

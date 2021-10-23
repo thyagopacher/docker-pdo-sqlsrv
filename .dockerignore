@@ -5,9 +5,22 @@ temp?
 
 # ignore .git and .cache folders
 .git
+.gitignore
+*/.gitignore
+*/*/.gitignore
 .cache
 
 # ignore all markdown files (md) beside all README*.md other than README-secret.md
 *.md
 !README*.md
 README-secret.md
+
+# Ignore SQL dumps
+*.sql
+*.sql.tar.gz
+
+# Git is not needed after deploy
+.git
+.gitignore
+*/.gitignore
+*/*/.gitignore
