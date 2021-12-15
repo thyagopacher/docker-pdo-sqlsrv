@@ -14,6 +14,7 @@ services:
     links:
       - db
       - mailhog
+      - rabbit 
     networks:
       default:
         aliases:
@@ -35,3 +36,18 @@ services:
     ports: 
     - 1025:1025
     - 8025:8025  
+  rabbit:
+    image: "rabbitmq:3.7.17"
+    container_name: rabbit
+    labels:
+      NAME: "rabbit"    
+    volumes:
+      - /rabbitmq:/var/lib/rabbitmq/mnesia
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+    - 5672:5672
+    - 15672:15672    
+ 

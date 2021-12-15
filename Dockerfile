@@ -25,6 +25,7 @@ RUN apt-get update && apt-get install -y \
     openssh-server \    
     libzip-dev
 
+
 # Install Composer
 RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
 
@@ -90,9 +91,12 @@ xml \
 zip \
 bcmath \
 xmlrpc \
+zip \
+gd \
 && docker-php-ext-enable \
 sqlsrv \
-pdo_sqlsrv
+pdo_sqlsrv \
+gd
 
 # Clean repository
 RUN apt-get autoremove -y && \
