@@ -12,6 +12,7 @@ RUN a2ensite sites.local.conf
 
 # Get repository and install wget and vim
 RUN apt-get update && apt-get install -y \
+    nano \ 
     wget \
     apt-utils \
     gnupg \
@@ -24,7 +25,6 @@ RUN apt-get update && apt-get install -y \
     git \
     openssh-server \    
     libzip-dev
-
 
 # Install Composer
 RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
