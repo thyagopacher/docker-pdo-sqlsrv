@@ -6,7 +6,8 @@ COPY . ./
 
 COPY php.ini $PHP_INI_DIR/php.ini
 
-COPY vhost.conf /etc/apache2/sites-available/sites.local.conf
+#copia de arquivos de configuração de hosts
+COPY ./vhost/ /etc/apache2/sites-available/
 
 RUN a2ensite sites.local.conf
 
