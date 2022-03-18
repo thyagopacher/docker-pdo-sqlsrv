@@ -1,5 +1,7 @@
 FROM php:7.3.28-apache
 
+MAINTAINER Thyago Henrique Pacher <thyago.pacher@gmail.com>
+
 WORKDIR /var/www/html/
 
 COPY . ./
@@ -69,7 +71,8 @@ supervisor
 RUN docker-php-ext-configure calendar && docker-php-ext-install calendar
 
 # Install PHP extensions
-RUN pecl install sqlsrv pdo_sqlsrv
+RUN pecl install sqlsrv-5.6.0 pdo_sqlsrv-5.6.0
+
 
 RUN apt-get -y update \ 
 && apt-get install -y libicu-dev \ 
