@@ -71,8 +71,6 @@ RUN docker-php-ext-configure calendar && docker-php-ext-install calendar
 # Install PHP extensions
 RUN pecl install sqlsrv pdo_sqlsrv
 
-RUN pecl install xdebug && docker-php-ext-enable xdebug
-
 RUN apt-get -y update \ 
 && apt-get install -y libicu-dev \ 
 && docker-php-ext-configure intl \ 
