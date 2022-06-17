@@ -79,6 +79,18 @@ RUN apt-get -y update \
 && docker-php-ext-configure intl \ 
 && docker-php-ext-install intl
 
+RUN echo " == Instalando CURL == "
+RUN apt-get install curl
+
+RUN echo " == Baixando setup NodeJS == "
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN apt-get install --yes nodejs
+RUN node -v
+RUN npm -v
+RUN npm i -g nodemon
+RUN npm i -g forever
+RUN nodemon -v
+
 # PRA VER SE TEM ALGUM BUG NO PHP
 # RUN php -i | grep "Configure Command"
 
