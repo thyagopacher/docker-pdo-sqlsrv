@@ -6,6 +6,8 @@ WORKDIR /var/www/html/
 
 COPY . ./
 
+RUN echo " == Criando pasta integrador-dev == "
+RUN mkdir -p /var/www/html/integrador-dev/
 COPY php.ini $PHP_INI_DIR/php.ini
 
 COPY vhost.conf /etc/apache2/sites-available/sites.local.conf
@@ -119,6 +121,7 @@ rm -rf /var/lib/apt/lists/*
 #RUN sed -e 's/max_execution_time = 30/max_execution_time = 900/' -i /etc/php/7.3/fpm/php.ini
 
 RUN a2enmod rewrite
+
 
 RUN a2enmod headers
 
