@@ -30,7 +30,10 @@ services:
       - ACCEPT_EULA=Y
     ports:
       - "1433:1433"
-
+    volumes:
+      - ./banco:/banco
+      - ./banco/mssql:/var/opt/mssql
+      - ./banco/sqlserver:/var/opt/sqlserver 
   mailhog:
     image: mailhog/mailhog
     container_name: mailhog
