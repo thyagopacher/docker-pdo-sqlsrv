@@ -8,7 +8,10 @@ COPY php.ini $PHP_INI_DIR/php.ini
 #copia de arquivos de configuração de hosts
 COPY ./vhost/ /etc/apache2/sites-available/
 
-RUN a2ensite sites.local.conf
+RUN a2ensite emailHost.local.conf
+RUN a2ensite crmmw.local.conf
+RUN a2ensite indicadores.local.conf
+RUN a2ensite testador.local.conf
 
 # Get repository and install wget and vim
 RUN apt-get update && apt-get install -y \
