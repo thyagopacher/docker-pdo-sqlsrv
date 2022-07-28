@@ -8,7 +8,7 @@ COPY php.ini $PHP_INI_DIR/php.ini
 #copia de arquivos de configuração de hosts
 COPY ./vhost/ /etc/apache2/sites-available/
 
-RUN a2ensite emailHost.local.conf
+RUN a2ensite email.local.conf
 RUN a2ensite crmmw.local.conf
 RUN a2ensite indicadores.local.conf
 RUN a2ensite testador.local.conf
