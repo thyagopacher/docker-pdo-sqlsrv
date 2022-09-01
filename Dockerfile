@@ -87,6 +87,7 @@ RUN docker-php-ext-install \
 iconv \
 sockets \
 pdo \
+mysqli \
 pdo_mysql \
 xsl \
 exif \
