@@ -10,10 +10,8 @@ services:
       - "80:80"
     depends_on:
       - db
-      - mailhog 
     links:
       - db
-      - mailhog
     networks:
       default:
         aliases:
@@ -33,9 +31,3 @@ services:
       - ./banco:/banco
       - ./banco/mssql:/var/opt/mssql
       - ./banco/sqlserver:/var/opt/sqlserver 
-  mailhog:
-    image: mailhog/mailhog
-    container_name: mailhog
-    ports: 
-    - 1025:1025
-    - 8025:8025  
