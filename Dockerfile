@@ -3,7 +3,8 @@ WORKDIR /var/www/html/
 
 COPY . ./
 
-COPY php.ini $PHP_INI_DIR/php.ini
+COPY config/php.ini $PHP_INI_DIR/php.ini
+COPY config/xdebug.ini $PHP_INI_DIR/xdebug.ini
 
 #copia de arquivos de configuração de hosts
 COPY ./vhost/ /etc/apache2/sites-available/
@@ -28,6 +29,10 @@ RUN apt-get update && apt-get install -y \
     git \
     openssh-server \    
     libzip-dev
+
+
+RUN pecl install xdebug
+RUN docker-php-ext-enable xdebug
 
 # Install Composer
 RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
@@ -109,7 +114,6 @@ rm -rf /var/lib/apt/lists/*
 #RUN sed -e 's/max_execution_time = 30/max_execution_time = 900/' -i /etc/php/7.3/fpm/php.ini
 
 RUN a2enmod rewrite
-
 RUN a2enmod headers
 
 #coloca um padrão melhor para memory do PHP
