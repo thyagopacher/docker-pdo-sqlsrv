@@ -1,6 +1,11 @@
 FROM php:7.3.28-apache
 WORKDIR /var/www/html/
 
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+
+RUN chmod +x /usr/local/bin/install-php-extensions && \
+    install-php-extensions gd xdebug ssh2
+
 COPY . ./
 
 COPY config/php.ini $PHP_INI_DIR/php.ini
@@ -30,9 +35,6 @@ RUN apt-get update && apt-get install -y \
     openssh-server \    
     libzip-dev
 
-
-RUN pecl install xdebug
-RUN docker-php-ext-enable xdebug
 
 # Install Composer
 RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
@@ -75,6 +77,7 @@ libssl-dev \
 openssl \
 supervisor
 
+RUN docker-php-ext-enable ssh2
 RUN docker-php-ext-configure calendar && docker-php-ext-install calendar
 
 # Install PHP extensions
