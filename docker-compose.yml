@@ -6,6 +6,7 @@ services:
     restart: always
     volumes:
       - ./web:/var/www/html
+      - ./.ssh:/home/.ssh 
     ports:
       - "80:80"
     depends_on:
@@ -31,4 +32,3 @@ services:
       - ./banco:/banco
       - ./banco/mssql:/var/opt/mssql
       - ./banco/sqlserver:/var/opt/sqlserver 
-      - ./.ssh/:/home/user/.ssh 

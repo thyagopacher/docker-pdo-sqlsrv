@@ -39,6 +39,9 @@ RUN apt-get update && apt-get install -y \
 # Install Composer
 RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
 
+RUN mkdir -p /home/.ssh && \
+    chmod 0700 /home/.ssh
+
 # Authorize SSH Host
 RUN mkdir -p /root/.ssh && \
     chmod 0700 /root/.ssh && \
