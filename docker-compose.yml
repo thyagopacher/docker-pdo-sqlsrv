@@ -6,7 +6,7 @@ services:
     restart: always
     volumes:
       - ./web:/var/www/html
-      - ./.ssh:/home/.ssh 
+      - /home/$USER/.ssh:/home/.ssh 
     ports:
       - "80:80"
     depends_on:
