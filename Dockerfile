@@ -1,4 +1,4 @@
-FROM php:7.3.28-apache
+FROM php:7.4.3-apache
 WORKDIR /var/www/html/
 
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
