@@ -58,6 +58,11 @@ RUN ACCEPT_EULA=Y apt-get -y --no-install-recommends install msodbcsql17 unixodb
 RUN pecl install sqlsrv-5.8.0
 RUN pecl install pdo_sqlsrv-5.8.0
 
+RUN apt-get -y update \
+&& apt-get install -y libicu-dev \ 
+&& docker-php-ext-configure intl \
+&& docker-php-ext-install intl
+
 RUN docker-php-ext-install \
 iconv \
 sockets \
@@ -68,6 +73,8 @@ pdo_mysql
 RUN docker-php-ext-enable \
 sqlsrv \
 pdo_sqlsrv
+
+RUN docker-php-ext-install calendar && docker-php-ext-configure calendar
 
 # Clean repository
 RUN apt-get autoremove -y && \
