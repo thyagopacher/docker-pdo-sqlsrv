@@ -22,6 +22,8 @@ RUN a2ensite testador.local.conf
 RUN apt-get update \
     && apt-get install -y \
         nano \ 
+        git \ 
+        zip \ 
         wget \
         apt-utils \
         gnupg \
