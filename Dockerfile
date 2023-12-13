@@ -39,11 +39,15 @@ RUN apt-get update \
         odbcinst \
         freetds-bin \
         freetds-common \
+        libxml2-dev \
         && docker-php-ext-configure pdo_odbc --with-pdo-odbc=unixODBC,/usr \
-        && docker-php-ext-install pdo_odbc
+        && docker-php-ext-install pdo_odbc \
+        && docker-php-ext-install -j$(nproc) xml
 
 # Install Composer
 RUN php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
+
+RUN apt install -y build-essential
 
 RUN cp /usr/share/tdsodbc/odbcinst.ini /etc/
 
