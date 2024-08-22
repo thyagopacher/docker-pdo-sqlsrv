@@ -1,9 +1,8 @@
-version: "3"
 services:
   web:
     build: .
     container_name: apache_web
-    restart: always
+    restart: unless-stopped
     volumes:
       - ./web:/var/www/html
       - /home/$USER/.ssh:/home/.ssh 
@@ -23,7 +22,7 @@ services:
           - email.local
   db:
     image: mcr.microsoft.com/mssql/server:2017-latest
-    restart: always
+    restart: unless-stopped
     environment:
       - SA_PASSWORD=usuario@senha
       - ACCEPT_EULA=Y
@@ -33,3 +32,4 @@ services:
       - ./banco:/banco
       - ./banco/mssql:/var/opt/mssql
       - ./banco/sqlserver:/var/opt/sqlserver 
+      - ./logs/:/var/log/apache2

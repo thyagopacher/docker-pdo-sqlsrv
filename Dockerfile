@@ -4,9 +4,10 @@ WORKDIR /var/www/html/
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/install-php-extensions && \
-    install-php-extensions gd xdebug ssh2
+    install-php-extensions
 
-COPY . ./
+# Copiar os arquivos para o diretório /var/www/html
+COPY ./web/ /var/www/html/
 COPY config/php.ini $PHP_INI_DIR/php.ini
 COPY config/xdebug.ini $PHP_INI_DIR/xdebug.ini
 
@@ -23,7 +24,6 @@ RUN apt-get update \
     && apt-get install -y \
         nano \ 
         git \ 
-        zip \ 
         wget \
         apt-utils \
         gnupg \

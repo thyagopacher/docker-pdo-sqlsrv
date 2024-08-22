@@ -12,6 +12,8 @@ temp?
 
 # ignore all markdown files (md) beside all README*.md other than README-secret.md
 *.md
+*.rst
+*.txt
 !README*.md
 README-secret.md
 
@@ -24,3 +26,5 @@ README-secret.md
 .gitignore
 */.gitignore
 */*/.gitignore
+
+./banco/mssql/log/*
